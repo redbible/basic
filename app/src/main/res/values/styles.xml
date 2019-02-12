@@ -1,15 +1,46 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="panelBackground">@color/white</item>
     </style>
 
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@drawable/splash</item>
+    </style>
+
+    <style name="ClickableLayout">
+        <item name="android:foreground">?android:selectableItemBackgroundBorderless</item>
+    </style>
+
+    <style name="ButtonBlueRound" parent="BtnWhite">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">67dp</item>
+        <item name="android:layout_marginLeft">13dp</item>
+        <item name="android:layout_marginRight">13dp</item>
+        <item name="android:paddingLeft">29dp</item>
+        <item name="android:paddingRight">29dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">@drawable/button_bg_blue</item>
+    </style>
+
+    <style name="ButtonWhiteRound" parent="BtnBlue">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">67dp</item>
+        <item name="android:layout_marginLeft">13dp</item>
+        <item name="android:layout_marginRight">13dp</item>
+        <item name="android:paddingLeft">29dp</item>
+        <item name="android:paddingRight">29dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">@drawable/button_bg_white</item>
+    </style>
+
+    <style name="LineDim">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/dim</item>
     </style>
 
     <style name="TitleBlack">
@@ -40,6 +71,7 @@
     </style>
 
     <style name="BtnWhite">
+        <item name="android:textStyle">bold</item>
         <item name="android:textSize">16sp</item>
         <item name="android:letterSpacing">-0.025</item>
         <item name="android:lineSpacingExtra">3sp</item>
@@ -80,6 +112,7 @@
     </style>
 
     <style name="BtnBlue">
+        <item name="android:textStyle">bold</item>
         <item name="android:textSize">16sp</item>
         <item name="android:letterSpacing">-0.025</item>
         <item name="android:lineSpacingExtra">3sp</item>
