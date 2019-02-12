@@ -11,4 +11,223 @@
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@drawable/splash</item>
     </style>
+
+    <style name="TitleBlack">
+        <item name="android:textSize">26sp</item>
+        <item name="android:letterSpacing">-0.025</item>
+        <item name="android:lineSpacingExtra">30sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Copy">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/white_two</item>
+    </style>
+
+    <style name="Normal">
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">-0.025</item>
+        <item name="android:lineSpacingExtra">40sp</item>
+        <item name="android:textColor">@color/normal</item>
+    </style>
+
+    <style name="Dim">
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">-0.025</item>
+        <item name="android:lineSpacingExtra">40sp</item>
+        <item name="android:textColor">@color/dim</item>
+    </style>
+
+    <style name="BtnWhite">
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">-0.025</item>
+        <item name="android:lineSpacingExtra">3sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="SubtitleGrey">
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">-0.025</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">@color/normal</item>
+    </style>
+
+    <style name="DescriptionGrey">
+        <item name="android:textSize">13sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">@color/grey</item>
+    </style>
+
+    <style name="Id">
+        <item name="android:textSize">23sp</item>
+        <item name="android:letterSpacing">-0.025</item>
+        <item name="android:lineSpacingExtra">33sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="SubtitleBlue">
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">-0.025</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">@color/vibrant_blue</item>
+    </style>
+
+    <style name="DescriptionBlue">
+        <item name="android:textSize">13sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">@color/vibrant_blue</item>
+    </style>
+
+    <style name="BtnBlue">
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">-0.025</item>
+        <item name="android:lineSpacingExtra">3sp</item>
+        <item name="android:textColor">@color/vibrant_blue</item>
+    </style>
+
+    <style name="TitleWhite">
+        <item name="android:textSize">26sp</item>
+        <item name="android:letterSpacing">-0.025</item>
+        <item name="android:lineSpacingExtra">30sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="DescriptionWhite">
+        <item name="android:textSize">13sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="DescriptionPink">
+        <item name="android:textSize">13sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">@color/bright_pink</item>
+    </style>
+
+    <style name="DescriptionBold">
+        <item name="android:textSize">13sp</item>
+        <item name="android:letterSpacing">-0.025</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">@color/grey</item>
+    </style>
+
+    <style name="SubtitlePink">
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">-0.025</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">@color/bright_pink</item>
+    </style>
+
+    <style name="BtnSmall">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:letterSpacing">-0.025</item>
+        <item name="android:lineSpacingExtra">56sp</item>
+        <item name="android:textColor">@color/grey</item>
+    </style>
+
+    <style name="SubtitleWhite">
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">-0.025</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TabOff">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:letterSpacing">-0.025</item>
+        <item name="android:lineSpacingExtra">45sp</item>
+        <item name="android:textColor">@color/dim</item>
+    </style>
+
+    <style name="TabOn">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:letterSpacing">-0.025</item>
+        <item name="android:lineSpacingExtra">45sp</item>
+        <item name="android:textColor">@color/vibrant_blue</item>
+    </style>
+
+    <style name="ListTitle">
+        <item name="android:textSize">11sp</item>
+        <item name="android:letterSpacing">-0.025</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">@color/normal</item>
+    </style>
+
+    <style name="ListSub">
+        <item name="android:textSize">11sp</item>
+        <item name="android:letterSpacing">-0.025</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">@color/normal</item>
+    </style>
+
+    <style name="NumberBlack">
+        <item name="android:gravity">end</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:letterSpacing">-0.025</item>
+        <item name="android:lineSpacingExtra">30sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="ListSubtitle">
+        <item name="android:textSize">11sp</item>
+        <item name="android:letterSpacing">-0.025</item>
+        <item name="android:lineSpacingExtra">11sp</item>
+        <item name="android:textColor">@color/normal</item>
+    </style>
+
+    <style name="ListContents">
+        <item name="android:gravity">end</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:letterSpacing">-0.025</item>
+        <item name="android:lineSpacingExtra">11sp</item>
+        <item name="android:textColor">@color/normal</item>
+    </style>
+
+    <style name="ListdoubleBlue">
+        <item name="android:textSize">11sp</item>
+        <item name="android:letterSpacing">-0.025</item>
+        <item name="android:lineSpacingExtra">5sp</item>
+        <item name="android:textColor">@color/vibrant_blue</item>
+    </style>
+
+    <style name="NumberGrey">
+        <item name="android:gravity">end</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:letterSpacing">-0.025</item>
+        <item name="android:lineSpacingExtra">30sp</item>
+        <item name="android:textColor">@color/dim</item>
+    </style>
+
+    <style name="NumberBlue">
+        <item name="android:gravity">end</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:letterSpacing">-0.025</item>
+        <item name="android:lineSpacingExtra">30sp</item>
+        <item name="android:textColor">@color/vibrant_blue</item>
+    </style>
+
+    <style name="SubtitleBold">
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">-0.025</item>
+        <item name="android:lineSpacingExtra">40sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="ListdoubleBlack">
+        <item name="android:textSize">11sp</item>
+        <item name="android:letterSpacing">-0.025</item>
+        <item name="android:lineSpacingExtra">5sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="SubtitleBlack">
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">-0.025</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
 </resources>

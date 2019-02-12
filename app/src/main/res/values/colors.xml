@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="vibrant_blue">#0043ff</color>
+    <color name="white">#ffffff</color>
+    <color name="white_two">#fafafa</color>
+    <color name="grey">#666666</color>
+    <color name="normal">#555555</color>
+    <color name="black">#000000</color>
+    <color name="dim">#cccccc</color>
+    <color name="bright_pink">#ff00b7</color>
+
+
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
