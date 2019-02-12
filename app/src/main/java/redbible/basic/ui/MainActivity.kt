@@ -10,6 +10,7 @@ class MainActivity : BaseDataBindingActivity<MainActivityBinding>(R.layout.main_
     val viewModel by inject<MainViewModel>()
 
     override fun MainActivityBinding.onBind() {
+        viewModel.bindLifecycle(this@MainActivity)
         view = this@MainActivity
         vm = viewModel
     }
