@@ -5,9 +5,9 @@
 
     <data>
 
-        <variable name="view" type="redbible.basic.ui.MainActivity"/>
+        <variable name="view" type="mobile.doremit.ui.MainActivity"/>
 
-        <variable name="vm" type="redbible.basic.viewmodel.MainViewModel"/>
+        <variable name="vm" type="mobile.doremit.viewmodel.MainViewModel"/>
 
     </data>
 
