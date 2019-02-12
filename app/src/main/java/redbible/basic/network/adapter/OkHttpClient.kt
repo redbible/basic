@@ -1,6 +1,5 @@
 package coinone.co.kr.official.network
 
-import android.app.Application
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import redbible.basic.BuildConfig

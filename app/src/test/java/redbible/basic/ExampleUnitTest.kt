@@ -1,8 +1,8 @@
 package redbible.basic
 
+import org.junit.Assert.assertEquals
 import org.junit.Test
-
-import org.junit.Assert.*
+import redbible.basic.ui.MainActivity
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -11,6 +11,7 @@ import org.junit.Assert.*
  */
 class ExampleUnitTest {
     val mainActivity = MainActivity()
+
     @Test
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
@@ -18,6 +19,7 @@ class ExampleUnitTest {
 
     @Test
     fun testtt() {
+        mainActivity.call()
 //        assertEquals(5, mainActivity.getValue())
     }
 }

@@ -1,19 +1,6 @@
 package coinone.co.kr.official.network
 
-import android.app.AlertDialog
-import android.content.Context
-import android.content.Intent
-import android.net.ConnectivityManager
-import android.net.Uri
-import android.view.View
-import android.view.WindowManager
-import coinone.co.kr.official.common.network.api.model.ApiException
-import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
-
-class RxNetworkErrorHandler {
-    private var alert: AlertDialog? = null
-    private var isCheckingServerStatus = false
+class RxNetworkErrorAdapter {
 
     fun processErrorHandler(it: Throwable?) {
 //        if (it != null) {

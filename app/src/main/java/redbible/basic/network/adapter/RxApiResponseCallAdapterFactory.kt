@@ -32,12 +32,12 @@ open class RxApiResponseCallAdapterFactory : CallAdapter.Factory {
 
     override fun get(returnType: Type, annotations: Array<out Annotation>, retrofit: Retrofit): CallAdapter<*, *>? {
         var type = returnType
-
-        if (returnType is ParameterizedType && returnType.actualTypeArguments.isNotEmpty()) {
-            val apiResponseType = ParameterizedTypeImpl(null, ApiResponse::class.java, returnType.actualTypeArguments[0])
-
-            type = ParameterizedTypeImpl(null, returnType.rawType, apiResponseType)
-        }
+//
+//        if (returnType is ParameterizedType && returnType.actualTypeArguments.isNotEmpty()) {
+//            val apiResponseType = ParameterizedTypeImpl(null, ApiResponse::class.java, returnType.actualTypeArguments[0])
+//
+//            type = ParameterizedTypeImpl(null, returnType.rawType, apiResponseType)
+//        }
 
         return createAdapter(rxFactory.get(type, annotations, retrofit), type, annotations, retrofit)
     }
