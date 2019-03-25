@@ -6,12 +6,6 @@
     <item>
         <bitmap
                 android:gravity="center"
-                android:src="@drawable/logo" />
-    </item>
-
-    <item android:bottom="95dp">
-        <bitmap
-                android:gravity="bottom"
-                android:src="@drawable/logo_remitany" />
+                android:src="@drawable/img_logo" />
     </item>
 </layer-list>

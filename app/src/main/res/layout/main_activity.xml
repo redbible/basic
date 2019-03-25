@@ -2,9 +2,9 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
 
-        <variable name="view" type="mobile.doremit.ui.MainActivity"/>
+        <variable name="view" type="mobile.nftf.ui.MainActivity"/>
 
-        <variable name="vm" type="mobile.doremit.viewmodel.MainViewModel"/>
+        <variable name="vm" type="mobile.nftf.viewmodel.MainViewModel"/>
 
     </data>
     <LinearLayout
@@ -12,71 +12,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-        <android.support.v4.view.ViewPager
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:id="@+id/viewPager"/>
-
-        <View style="@style/LineDim"/>
-
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="63dp"
-                android:orientation="horizontal"
-                android:layout_gravity="bottom">
-
-            <ImageButton
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@color/white"
-                    android:onClick="@{(vi) -> view.onClickBottomButton(vi, 1)}"
-                    android:tint="@drawable/selected_color"
-                    style="@style/ClickableLayout"
-                    android:src="@drawable/tab_1"/>
-
-            <ImageButton
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@color/white"
-                    android:tint="@drawable/selected_color"
-                    android:onClick="@{(vi) -> view.onClickBottomButton(vi, 1)}"
-                    style="@style/ClickableLayout"
-                    android:src="@drawable/tab_2"/>
-
-            <ImageButton
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@color/white"
-                    android:tint="@drawable/selected_color"
-                    android:onClick="@{(vi) -> view.onClickBottomButton(vi, 2)}"
-                    style="@style/ClickableLayout"
-                    android:src="@drawable/tab_3"/>
-
-            <ImageButton
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:tint="@drawable/selected_color"
-                    android:background="@color/white"
-                    style="@style/ClickableLayout"
-                    android:onClick="@{(vi) -> view.onClickBottomButton(vi, 3)}"
-                    android:src="@drawable/tab_4"/>
-
-            <ImageButton
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:tint="@drawable/selected_color"
-                    android:onClick="@{(vi) -> view.onClickBottomButton(vi, 4)}"
-                    android:background="@color/white"
-                    style="@style/ClickableLayout"
-                    android:src="@drawable/tab_5"/>
-
-        </LinearLayout>
 
     </LinearLayout>
 
