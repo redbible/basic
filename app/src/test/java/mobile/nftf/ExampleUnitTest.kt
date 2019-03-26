@@ -1,24 +1,31 @@
 package mobile.nftf
 
+import mobile.nftf.di.networkModule
+import mobile.nftf.di.repositoryModule
+import mobile.nftf.di.viewModelModule
+import mobile.nftf.viewmodel.MainViewModel
 import org.junit.Assert.assertEquals
+import org.junit.Before
 import org.junit.Test
-import mobile.nftf.ui.MainActivity
+import org.koin.standalone.StandAloneContext.startKoin
+import org.koin.standalone.inject
+import org.koin.test.AutoCloseKoinTest
 
 /**
  * Example local unit test, which will execute on the development machine (host).
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
-class ExampleUnitTest {
-    val mainActivity = MainActivity()
+class ExampleUnitTest : AutoCloseKoinTest() {
+    val mainViewModel by inject<MainViewModel>()
 
-    @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+    @Before
+    fun initClient() {
+        startKoin(listOf(networkModule, repositoryModule, viewModelModule))
     }
 
     @Test
-    fun testtt() {
-//        assertEquals(5, mainActivity.getValue())
+    fun addition_isCorrect() {
+        assertEquals(mainViewModel.getNameByHtmlUrl().blockingGet(), "JakeWharton")
     }
 }
