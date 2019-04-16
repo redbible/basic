@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.support.v4.app.Fragment
+import mobile.nftf.network.enumeration.CoursType
 import mobile.nftf.ui.MainActivity
 import mobile.nftf.ui.SplashActivity
 import java.util.*
@@ -74,8 +75,9 @@ class ActivityNavigator private constructor(private val context: Context) {
             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
         }
 
-    fun main() =
+    fun main(coursType: CoursType) =
         MyIntent(MainActivity::class.java).apply {
+            putExtra(KEY_DATA, coursType.ordinal)
             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
         }

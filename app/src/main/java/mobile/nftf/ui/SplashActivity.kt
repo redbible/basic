@@ -1,26 +1,20 @@
 package mobile.nftf.ui
 
-import coinone.co.kr.official.common.ui.activity.BaseActivity
-import io.reactivex.Observable
+import android.view.View
+import coinone.co.kr.official.common.ui.activity.BaseDataBindingActivity
 import mobile.nftf.ActivityNavigator
-import mobile.nftf.BuildConfig
-import java.util.concurrent.TimeUnit
+import mobile.nftf.R
+import mobile.nftf.databinding.SplashActivityBinding
+import mobile.nftf.network.enumeration.CoursType
 
-class SplashActivity : BaseActivity(0) {
-
-    override fun setContentView() {
-
+class SplashActivity : BaseDataBindingActivity<SplashActivityBinding>(R.layout.splash_activity) {
+    override fun SplashActivityBinding.onBind() {
+        vi = this@SplashActivity
     }
 
-    override fun setupView() {
-        if (BuildConfig.DEBUG) {
-            ActivityNavigator.with(this).main().start()
-        } else {
-            Observable.just(0)
-                .delay(2, TimeUnit.SECONDS)
-                .subscribe { ActivityNavigator.with(this).main().start() }
-        }
+    fun onClick(vi: View) {
+        val course = CoursType.values()[vi.tag.toString().toInt()]
 
-        finish()
+        ActivityNavigator.with(this).main(course).start()
     }
 }

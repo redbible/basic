@@ -13,7 +13,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "mobile.coinone.nftf"
+        applicationId "mobile.bible.test"
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
         versionCode 1
@@ -50,7 +50,7 @@ android {
             versionNameSuffix "-dev"
 
             resValue "string", "app_name", "coinone-DEV"
-            buildConfigField "String", "API_URL", "\"https://api.github.com/\""
+            buildConfigField "String", "API_URL", "\"https://dev-kiosk.981park.net/\""
 
             copy {
                 from 'src/dev/'
