@@ -1,8 +1,10 @@
 package mobile.nftf.di
 
+import mobile.nftf.viewmodel.CartViewModel
+import mobile.nftf.viewmodel.SearchViewModel
 import org.koin.dsl.module.module
-import mobile.nftf.viewmodel.MainViewModel
 
 val viewModelModule = module {
-    single { MainViewModel(get()) }
+    single { SearchViewModel(get()) }
+    single { CartViewModel(get()) }
 }

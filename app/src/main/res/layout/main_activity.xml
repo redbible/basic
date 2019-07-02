@@ -4,108 +4,23 @@
 
         <variable name="vi" type="mobile.nftf.ui.MainActivity"/>
 
-        <variable name="vm" type="mobile.nftf.viewmodel.MainViewModel"/>
-
     </data>
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-        <LinearLayout
+        <android.support.design.widget.TabLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="50dp"
+                app:tabSelectedTextColor="@color/black"
+                app:tabTextColor="@color/grey"
+                android:id="@+id/tab"/>
 
-            <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:paddingLeft="20dp"
-                    android:gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:textColor="@color/grey"
-                    android:text="티켓예약"/>
-
-            <ImageView android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:onClick="@{() -> vi.finish()}"
-                       android:src="@mipmap/ic_launcher"/>
-        </LinearLayout>
-
-
-        <android.support.v4.widget.NestedScrollView
+        <android.support.v4.view.ViewPager
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
-
-            <LinearLayout android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:orientation="vertical">
-
-                <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/grey"
-                        android:textSize="30sp"
-                        android:drawableRight="@mipmap/ic_launcher"
-                        android:layout_marginBottom="20dp"
-                        android:text="탑승할 시간과\n코스를 선택하세요"/>
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/grey"
-                        android:text="@{vm.liveDescription}"/>
-
-                <View android:layout_width="match_parent"
-                      android:layout_height="1dp"
-                      android:layout_marginTop="10dp"
-                      android:background="@color/grey"/>
-
-                <TextView android:layout_width="match_parent"
-                          android:layout_height="50dp"
-                          android:gravity="center"
-                          android:textColor="@color/grey"
-                          android:text="@{vm.todayString}"/>
-
-                <View android:layout_width="match_parent"
-                      android:layout_height="1dp"
-                      android:layout_marginBottom="10dp"
-                      android:background="@color/grey"/>
-
-                <android.support.v7.widget.RecyclerView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:nestedScrollingEnabled="false"
-                        app:layoutManager="android.support.v7.widget.GridLayoutManager"
-                        app:spanCount="2"
-                        android:id="@+id/rv"/>
-
-            </LinearLayout>
-
-        </android.support.v4.widget.NestedScrollView>
-
-        <LinearLayout android:layout_width="match_parent"
-                      android:layout_height="50dp"
-                      android:background="@color/grey"
-                      android:orientation="horizontal">
-
-            <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:onClick="@{() -> vi.finish()}"
-                    android:gravity="center"
-                    android:text="이전"/>
-
-            <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    android:gravity="center"
-                    android:onClick="@{() -> vi.onClickOk()}"
-                    android:text="시간대를 선택하세요"/>
-        </LinearLayout>
+                android:layout_height="match_parent"
+                android:id="@+id/viewPager"/>
 
     </LinearLayout>
 
