@@ -4,23 +4,64 @@
 
         <variable name="vi" type="mobile.nftf.ui.MainActivity"/>
 
+        <variable name="vm" type="mobile.nftf.viewmodel.MainViewModel"/>
+
+        <import type="mobile.nftf.enumeration.OrderType"/>
+
     </data>
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-        <android.support.design.widget.TabLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                app:tabSelectedTextColor="@color/black"
-                app:tabTextColor="@color/grey"
-                android:id="@+id/tab"/>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:orientation="horizontal">
+            <EditText android:layout_width="0dp" android:layout_height="wrap_content"
+                      android:layout_weight="1"
+                      android:textSize="15sp"
+                      android:textColor="@color/black"
+                      android:text="@={vm.liveEdit}"/>
 
-        <android.support.v4.view.ViewPager
+            <TextView android:layout_width="50dp" android:layout_height="wrap_content"
+                      android:textColor="@color/black"
+                      android:foreground="?android:selectableItemBackgroundBorderless"
+                      android:onClick="@{() -> vi.onClickAddItem()}"
+                      android:text="ADD"/>
+        </LinearLayout>
+
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="50dp"
+                      android:orientation="horizontal">
+
+            <TextView android:layout_width="0dp" android:layout_height="match_parent"
+                      android:layout_weight="1"
+                      android:gravity="center"
+                      android:textColor="@color/black"
+                      android:onClick="@{() -> vi.onClickOrder(OrderType.DEFAULT)}"
+                      android:text="기본순"/>
+
+            <TextView android:layout_width="0dp" android:layout_height="match_parent"
+                      android:layout_weight="1"
+                      android:textColor="@color/black"
+                      android:gravity="center"
+                      android:onClick="@{() -> vi.onClickOrder(OrderType.NAME)}"
+                      android:text="내용순"/>
+
+            <TextView android:layout_width="0dp" android:layout_height="match_parent"
+                      android:layout_weight="1"
+                      android:gravity="center"
+                      android:textColor="@color/black"
+                      android:onClick="@{() -> vi.onClickOrder(OrderType.TIME)}"
+                      android:text="생성일순"/>
+
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/viewPager"/>
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                android:id="@+id/rv"
+                replaceAll="@{vm.liveItems}"/>
 
     </LinearLayout>
 

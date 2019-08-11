@@ -1,13 +1,11 @@
 package mobile.nftf.repository.impl
 
-import io.reactivex.disposables.Disposable
-import mobile.nftf.model.Item
+import mobile.nftf.model.Content
 
 interface InterfaceCache {
+    fun isInit(): Boolean
 
-    fun toggleItem(item: Item)
+    fun getItems(): List<Content>
 
-    fun getItems(): List<Item>
-
-    fun onChangedItems(response: (items: List<Item>) -> Unit): Disposable
+    fun setItems(contents: List<Content>)
 }

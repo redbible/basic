@@ -27,8 +27,5 @@ class MyApplication : Application() {
                     throw IllegalStateException("this application does not inherit CoinoneApplication")
                 return instance as MyApplication
             }
-
-        fun getString(stringId: Int): String = globalApplicationContext.getString(stringId)
-
     }
 }

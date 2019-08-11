@@ -1,31 +1,38 @@
 package mobile.nftf.network.api
 
-import coinone.co.kr.official.common.network.api.model.ApiPageResponse
 import io.reactivex.Single
+import mobile.nftf.model.Content
 import mobile.nftf.network.adapter.AuthInterceptor
-import mobile.nftf.network.enumeration.Sort
-import mobile.nftf.network.model.ClipKakao
-import mobile.nftf.network.model.ImageKakao
 import retrofit2.http.*
 
 
 interface ApiTest {
 
-    @GET("v2/search/image")
+    @GET("todos")
     @Headers(AuthInterceptor.ENABLE_AUTH)
-    fun fetchImages(
-        @Query("query") keyword: String,
-        @Query("page") page: Int,
-        @Query("size") size: Int = 30,
-        @Query("sort") sort: String = Sort.recency.name
-    ): Single<ApiPageResponse<ImageKakao>>
+    fun fetchTodos(): Single<List<Content>>
 
-    @GET("v2/search/vclip")
+    @FormUrlEncoded
+    @POST("todos")
     @Headers(AuthInterceptor.ENABLE_AUTH)
-    fun fetchClips(
-        @Query("query") keyword: String,
-        @Query("page") page: Int,
-        @Query("size") size: Int = 30,
-        @Query("sort") sort: String = Sort.recency.name
-    ): Single<ApiPageResponse<ClipKakao>>
+    fun addTodo(@Field("content") contenst: String): Single<Content>
+
+    @FormUrlEncoded
+    @PUT("todos/{itemId}")
+    @Headers(AuthInterceptor.ENABLE_AUTH)
+    fun updateTodo(@Path("itemId") id: Int,
+                   @Field("content") content: String? = null,
+                   @Field("done") done: Boolean? = null)
+            : Single<Content>
+
+    @DELETE("todos/{itemId}")
+    @Headers(AuthInterceptor.ENABLE_AUTH)
+    fun deleteTodo(@Path("itemId") id: Int)
+            : Single<List<Content>>
+
+    @FormUrlEncoded
+    @POST("todos/{itemId}/arrangement")
+    @Headers(AuthInterceptor.ENABLE_AUTH)
+    fun updateSeq(@Path("itemId") id: Int, @Field("seq") seq: Int)
+            : Single<List<Content>>
 }

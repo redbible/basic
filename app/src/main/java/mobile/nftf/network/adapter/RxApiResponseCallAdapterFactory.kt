@@ -1,6 +1,5 @@
 package coinone.co.kr.official.common.network.api.adapter
 
-import coinone.co.kr.official.common.network.api.model.ApiPageResponse
 import io.reactivex.schedulers.Schedulers
 import retrofit2.CallAdapter
 import retrofit2.Retrofit
@@ -42,16 +41,25 @@ open class RxApiResponseCallAdapterFactory : CallAdapter.Factory {
         return createAdapter(rxFactory.get(type, annotations, retrofit), type, annotations, retrofit)
     }
 
-    protected open fun createAdapter(rxAdapter: CallAdapter<*, *>?, returnType: Type, annotations: Array<out Annotation>, retrofit: Retrofit): RxApiResponseCallAdapter<*>? {
+    protected open fun createAdapter(
+        rxAdapter: CallAdapter<*, *>?,
+        returnType: Type,
+        annotations: Array<out Annotation>,
+        retrofit: Retrofit
+    ): RxApiResponseCallAdapter<*>? {
         if (rxAdapter == null) {
             return null
         }
 
         return clazz.getConstructor(CallAdapter::class.java)
-                .newInstance(rxAdapter)
+            .newInstance(rxAdapter)
     }
 
-    protected class ParameterizedTypeImpl(private val ownerType: Type?, private val rawType: Type, vararg typeArgument: Type) : ParameterizedType {
+    protected class ParameterizedTypeImpl(
+        private val ownerType: Type?,
+        private val rawType: Type,
+        vararg typeArgument: Type
+    ) : ParameterizedType {
 
         private val actualTypeArguments = typeArgument
 

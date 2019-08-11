@@ -9,7 +9,7 @@ class AuthInterceptor : Interceptor {
         const val ENABLE_AUTH = "AUTH: true"
     }
 
-    private val kakaoKey = "d7536dfe20bda97e12adf17c7d0dbab2"
+    private val userName = "honssyunggyung"
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val originalRequest = chain.request()
@@ -22,7 +22,8 @@ class AuthInterceptor : Interceptor {
 //        Log.d(url)
         return chain.proceed(
             originalRequest.newBuilder()
-                .addHeader("Authorization", "KakaoAK $kakaoKey")
+                .addHeader("X-Cardoc-User", userName)
+                .addHeader("Content-Type", "application/x-www-form-urlencoded")
                 .url(url)
                 .method(originalRequest.method(), originalRequest.body())
                 .build()

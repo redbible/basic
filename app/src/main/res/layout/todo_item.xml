@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal">
+
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+               android:id="@+id/checkbox"
+               android:src="@drawable/selected_check"/>
+
+    <LinearLayout android:layout_width="0dp"
+                  android:layout_height="wrap_content"
+                  android:layout_weight="1"
+                  android:orientation="vertical">
+
+        <EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:id="@+id/txtContent"
+                  android:background="@drawable/enabled_bg"
+                  android:textColor="@color/black"
+                  android:textSize="15sp"/>
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:id="@+id/txtDate"
+                  android:textColor="@color/black"
+                  android:textSize="12sp"/>
+
+    </LinearLayout>
+
+
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+               android:src="@drawable/btn_edit_n"
+               android:layout_marginRight="4dp"
+               android:id="@+id/btnEdit"/>
+
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+               android:src="@drawable/btn_close"
+               android:id="@+id/btnClose"/>
+</LinearLayout>
