@@ -1,6 +1,6 @@
 package mobile.nftf.common.ui.viewmodel
 
-import android.arch.lifecycle.*
+import androidx.lifecycle.*
 import coinone.co.kr.official.common.ui.fragment.BaseFragment
 
 abstract class BaseViewModel : ViewModel(), LifecycleObserver {

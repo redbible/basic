@@ -1,6 +1,6 @@
 package coinone.co.kr.official.common.ui.recyclerview
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import mobile.nftf.common.ui.recyclerview.BaseViewHolder
 

@@ -1,7 +1,7 @@
 package mobile.nftf.ext
 
-import android.databinding.BindingAdapter
-import android.support.v7.widget.RecyclerView
+import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.RecyclerView
 import coinone.co.kr.official.common.ui.recyclerview.BaseRecyclerViewAdapter
 
 @Suppress("UNCHECKED_CAST")
@@ -13,8 +13,10 @@ fun RecyclerView.replaceAll(list: List<Any>?) {
 
     when {
         adapter as? BaseRecyclerViewAdapter<Any> != null -> {
-            (adapter as BaseRecyclerViewAdapter<Any>).replaceAll(list)
-            adapter.notifyDataSetChanged()
+            (adapter as BaseRecyclerViewAdapter<Any>).run {
+                replaceAll(list)
+                notifyDataSetChanged()
+            }
         }
     }
 }

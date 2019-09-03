@@ -1,8 +1,8 @@
 package mobile.nftf.common.ui.recycler
 
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -77,7 +77,7 @@ abstract class PaginationRecyclerViewAdapter<T : Any>(
                 ?: throw IllegalStateException("Unsupported RecyclerView Adapter. implement PaginationRecyclerViewAdapter")
 
             val layoutManager = recyclerView.layoutManager
-            val visibleItemCount = layoutManager.childCount
+            val visibleItemCount = layoutManager!!.childCount
             val totalItemCount = layoutManager.itemCount
             val firstVisibleItemPosition = when (layoutManager) {
                 is LinearLayoutManager -> layoutManager.findFirstVisibleItemPosition()

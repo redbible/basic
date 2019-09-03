@@ -1,8 +1,8 @@
 package mobile.nftf.ui.mainpage
 
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
 
 class PageAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
     private val TITLE = listOf("검색 결과", "내 보관함")

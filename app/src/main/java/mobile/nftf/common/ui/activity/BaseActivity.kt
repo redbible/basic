@@ -1,7 +1,7 @@
 package coinone.co.kr.official.common.ui.activity
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import mobile.nftf.util.Disposer

@@ -1,6 +1,6 @@
 package mobile.nftf.ext
 
-import android.databinding.BindingAdapter
+import androidx.databinding.BindingAdapter
 import android.view.View
 
 @BindingAdapter("app:selected")
