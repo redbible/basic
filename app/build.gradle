@@ -50,7 +50,7 @@ android {
             versionNameSuffix "-dev"
 
             resValue "string", "app_name", "coinone-DEV"
-            buildConfigField "String", "API_URL", "\"https://dapi.kakao.com/\""
+            buildConfigField "String", "API_URL", "\"https://www.gettyimagesgallery.com/\""
 
             copy {
                 from 'src/dev/'

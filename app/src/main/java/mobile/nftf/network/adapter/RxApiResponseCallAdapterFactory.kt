@@ -1,6 +1,5 @@
 package coinone.co.kr.official.common.network.api.adapter
 
-import coinone.co.kr.official.common.network.api.model.ApiPageResponse
 import io.reactivex.schedulers.Schedulers
 import retrofit2.CallAdapter
 import retrofit2.Retrofit

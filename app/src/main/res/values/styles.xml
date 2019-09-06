@@ -263,4 +263,12 @@
         <item name="android:lineSpacingExtra">6sp</item>
         <item name="android:textColor">@color/black</item>
     </style>
+
+    <style name="CustomDialogTheme">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
 </resources>

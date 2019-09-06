@@ -1,6 +1,5 @@
 package coinone.co.kr.official.common.network.api.adapter
 
-import coinone.co.kr.official.common.network.api.model.ApiPageResponse
 import io.reactivex.*
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Call
@@ -12,13 +11,13 @@ open class RxApiResponseCallAdapter<R>(private val wrapped: CallAdapter<R, *>) :
     override fun adapt(call: Call<R>): Any {
         val result = wrapped.adapt(call)
 
-        if (result as? Observable<ApiPageResponse<R>> != null) {
+        if (result as? Observable<R> != null) {
             return result
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.computation())
                 .retryWhen { rxRetryWhen(it.toFlowable(BackpressureStrategy.BUFFER)).toObservable() }
         }
-        if (result as? Single<ApiPageResponse<R>> != null) {
+        if (result as? Single<R> != null) {
             return result
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.computation())

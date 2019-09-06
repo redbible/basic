@@ -1,27 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
 
-        <variable name="vi" type="mobile.nftf.ui.MainActivity"/>
-
+        <variable
+                name="vm"
+                type="mobile.nftf.viewmodel.MainViewModel" />
     </data>
-    <LinearLayout
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-        <com.google.android.material.tabs.TabLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                app:tabSelectedTextColor="@color/black"
-                app:tabTextColor="@color/grey"
-                android:id="@+id/tab"/>
-
-        <androidx.viewpager.widget.ViewPager
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/viewPager"/>
-
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:replaceAll="@{vm.liveImages}"
+            app:spanCount="3" />
 
 </layout>
