@@ -4,6 +4,7 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import mobile.nftf.common.ui.recyclerview.BaseViewHolder
 
+@Deprecated("Do not Need")
 abstract class BaseRecyclerViewAdapter<T : Any> : RecyclerView.Adapter<BaseViewHolder<T>>() {
 
     private var items = mutableListOf<T>()

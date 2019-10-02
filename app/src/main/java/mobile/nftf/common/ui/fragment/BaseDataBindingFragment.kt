@@ -22,11 +22,11 @@ abstract class BaseDataBindingFragment<B : ViewDataBinding>(
     }
 
     override fun setupView(view: View) {
-        binding.setLifecycleOwner(this)
+        binding.lifecycleOwner = this
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.run { onBind() }
+        binding.onBind()
     }
 }

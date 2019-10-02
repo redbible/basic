@@ -4,13 +4,17 @@ import mobile.nftf.di.networkModule
 import mobile.nftf.di.repositoryModule
 import mobile.nftf.di.viewModelModule
 import mobile.nftf.repository.RepositoryTest
+import mobile.nftf.viewmodel.CartViewModel
 import mobile.nftf.viewmodel.SearchViewModel
+import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import org.koin.standalone.StandAloneContext.startKoin
-import org.koin.standalone.inject
+import org.koin.core.context.startKoin
+import org.koin.core.context.stopKoin
 import org.koin.test.AutoCloseKoinTest
+import org.koin.test.get
+import org.koin.test.inject
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -20,12 +24,18 @@ import java.util.*
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 class ExampleUnitTest : AutoCloseKoinTest() {
-    val searchVm by inject<SearchViewModel>()
-    val repositoryTest by inject<RepositoryTest>()
+    private val repositoryTest by inject<RepositoryTest>()
 
     @Before
     fun initClient() {
-        startKoin(listOf(networkModule, repositoryModule, viewModelModule))
+        startKoin {
+            modules(listOf(networkModule, repositoryModule, viewModelModule))
+        }
+    }
+
+    @After
+    fun close() {
+        stopKoin()
     }
 
     @Test
@@ -52,6 +62,13 @@ class ExampleUnitTest : AutoCloseKoinTest() {
     fun getClips() {
         log(repositoryTest.getClips("설현", 1).blockingGet().documents.first().thumbnail)
         assertEquals(repositoryTest.getClips("설현", 1).blockingGet().documents.first().thumbnail, "")
+    }
+
+    @Test
+    fun veiwModel() {
+        get<CartViewModel>().run {
+            assert(this.plus(2, 3) == 5)
+        }
     }
 
     fun log(string: String) {

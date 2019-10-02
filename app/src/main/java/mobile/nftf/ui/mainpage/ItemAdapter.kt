@@ -8,9 +8,9 @@ import mobile.nftf.R
 import mobile.nftf.common.ui.recycler.PaginationRecyclerViewAdapter
 import mobile.nftf.common.ui.recyclerview.BaseViewHolder
 import mobile.nftf.model.Item
-import mobile.nftf.repository.impl.InterfaceCache
+import mobile.nftf.repository.impl.RepositoryCache
 
-class ItemAdapter(provider: DataProvider<Item>, val interfaceCache: InterfaceCache) :
+class ItemAdapter(provider: DataProvider<Item>, val repositoryCache: RepositoryCache) :
     PaginationRecyclerViewAdapter<Item>(provider) {
 
     override fun createRecyclableViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<Item> {
@@ -32,7 +32,7 @@ class ItemAdapter(provider: DataProvider<Item>, val interfaceCache: InterfaceCac
                 .load(data.thumbnail)
                 .into(img)
 
-            img.setOnClickListener { interfaceCache.toggleItem(data) }
+            img.setOnClickListener { repositoryCache.toggleItem(data) }
         }
     }
 }

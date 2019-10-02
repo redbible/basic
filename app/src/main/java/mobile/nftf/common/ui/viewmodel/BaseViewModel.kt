@@ -2,8 +2,13 @@ package mobile.nftf.common.ui.viewmodel
 
 import androidx.lifecycle.*
 import coinone.co.kr.official.common.ui.fragment.BaseFragment
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
+import mobile.nftf.util.Disposer
 
-abstract class BaseViewModel : ViewModel(), LifecycleObserver {
+abstract class BaseViewModel : ViewModel(), LifecycleObserver, Disposer {
+    protected val compositeDisposableOnPause = CompositeDisposable()
+    protected val compositeDisposableOnDestroy = CompositeDisposable()
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     open fun onCreated() {
@@ -28,8 +33,17 @@ abstract class BaseViewModel : ViewModel(), LifecycleObserver {
         //do nothing
     }
 
+    override fun disposeOnPause(disposable: Disposable) {
+        compositeDisposableOnPause.add(disposable)
+    }
+
+    override fun disposeOnDestroy(disposable: Disposable) {
+        compositeDisposableOnDestroy.add(disposable)
+    }
+
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
     open fun onPause() {
+        compositeDisposableOnPause.clear()
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
@@ -38,6 +52,7 @@ abstract class BaseViewModel : ViewModel(), LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     open fun onDestroy() {
+        compositeDisposableOnDestroy.clear()
     }
 
     fun bindLifecycle(owner: LifecycleOwner) {

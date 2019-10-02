@@ -12,14 +12,18 @@
             android:theme="@style/AppTheme">
 
         <activity android:name=".ui.MainActivity"
-                  android:configChanges="orientation|keyboardHidden"
-                  android:screenOrientation="portrait">
+                android:configChanges="orientation|keyboardHidden"
+                android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity android:name=".ui.SecondActivity"
+                android:configChanges="orientation|keyboardHidden"
+                android:screenOrientation="portrait"/>
 
     </application>
 

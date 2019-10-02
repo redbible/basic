@@ -6,6 +6,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.fragment.app.Fragment
 import mobile.nftf.ui.MainActivity
+import mobile.nftf.ui.SecondActivity
 import java.util.*
 
 /**
@@ -30,14 +31,19 @@ class ActivityNavigator private constructor(private val context: Context) {
     val stack: ArrayList<Intent> = ArrayList()
 
     fun main() =
-        MyIntent(MainActivity::class.java).apply {
-            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+        MyIntent(MainActivity::class.java)
+
+    fun second(data: String) =
+        MyIntent(SecondActivity::class.java).apply {
+            putExtra(KEY_DATA, data)
         }
 
     inner class MyIntent : Intent {
 
-        constructor(cls: Class<*>?) : super(context, cls)
+        constructor(cls: Class<*>?) : super(context, cls) {
+            addFlags(FLAG_ACTIVITY_CLEAR_TOP)
+            addFlags(FLAG_ACTIVITY_REORDER_TO_FRONT)
+        }
 
         constructor(action: String?, uri: Uri?) : super(action, uri)
 

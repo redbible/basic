@@ -9,6 +9,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.CompletableSubject
 
+@Deprecated("Do not Need")
 abstract class PaginationRecyclerViewAdapter<T : Any>(
     private val provider: DataProvider<T>
 ) : BaseRecyclerViewAutoUpdateAdapter<T>() {

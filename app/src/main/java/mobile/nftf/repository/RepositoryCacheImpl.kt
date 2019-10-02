@@ -1,20 +1,20 @@
 package mobile.nftf.repository
 
+import androidx.lifecycle.MutableLiveData
 import io.reactivex.disposables.Disposable
 import io.reactivex.subjects.BehaviorSubject
 import mobile.nftf.ext.showLongToastSafe
 import mobile.nftf.model.Item
-import mobile.nftf.repository.impl.InterfaceCache
-import java.lang.ref.WeakReference
+import mobile.nftf.repository.impl.RepositoryCache
 
 /*
     디비 이용시 상속하여 변경 가능
  */
-class RepositoryCache : InterfaceCache {
-    private val behaviorSubject = BehaviorSubject.create<ArrayList<Item>>().apply { onNext(ArrayList()) }
+class RepositoryCacheImpl : RepositoryCache {
+    private val subject = BehaviorSubject.create<ArrayList<Item>>().apply { onNext(ArrayList()) }
 
     override fun toggleItem(item: Item) {
-        val items = behaviorSubject.value
+        val items = subject.value
         if (items.contains(item)) {
             items.remove(item)
             "removed".showLongToastSafe()
@@ -22,14 +22,18 @@ class RepositoryCache : InterfaceCache {
             items.add(item)
             "added".showLongToastSafe()
         }
-        behaviorSubject.onNext(items)
+        subject.onNext(items)
     }
 
     override fun getItems(): List<Item> {
-        return behaviorSubject.value
+        return subject.value
     }
 
     override fun onChangedItems(response: (items: List<Item>) -> Unit): Disposable {
-        return behaviorSubject.subscribe { response.invoke(it) }
+        return subject.subscribe { response.invoke(it) }
+    }
+
+    override fun getLiveList(): MutableLiveData<List<Item>> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

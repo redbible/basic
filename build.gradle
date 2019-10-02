@@ -24,7 +24,7 @@ buildscript {
         firebaseMessageVersion = '17.3.4'
         firebaseCoreVersion = '16.0.6'
 
-        koinAndroidVersion = '1.0.2'
+        koinAndroidVersion = '2.0.1'
 
         aboutlibVersion = '6.0.8@aar'
 

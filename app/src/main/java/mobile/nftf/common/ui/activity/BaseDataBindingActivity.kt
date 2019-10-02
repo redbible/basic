@@ -5,7 +5,7 @@ import androidx.databinding.ViewDataBinding
 
 abstract class BaseDataBindingActivity<B : ViewDataBinding>(private val layoutId: Int) : BaseActivity(layoutId) {
 
-    private lateinit var binding: B
+    protected lateinit var binding: B
 
     abstract fun B.onBind()
 
@@ -14,8 +14,9 @@ abstract class BaseDataBindingActivity<B : ViewDataBinding>(private val layoutId
     }
 
     override fun setupView() {
-        binding.setLifecycleOwner(this)
-
-        binding.run { onBind() }
+        binding.run {
+            lifecycleOwner = this@BaseDataBindingActivity
+            onBind()
+        }
     }
 }

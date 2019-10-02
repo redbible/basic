@@ -8,9 +8,8 @@ import mobile.nftf.util.Disposer
 
 abstract class BaseActivity(private val layoutId: Int) : AppCompatActivity(), Disposer {
 
-    protected val compositeDisposableOnPause = CompositeDisposable()
-    protected val compositeDisposableOnStop = CompositeDisposable()
-    protected val compositeDisposableOnDestroy = CompositeDisposable()
+    private val compositeDisposableOnPause = CompositeDisposable()
+    private val compositeDisposableOnDestroy = CompositeDisposable()
 
     protected abstract fun setupView()
 
@@ -35,11 +34,6 @@ abstract class BaseActivity(private val layoutId: Int) : AppCompatActivity(), Di
         super.onPause()
     }
 
-    override fun onStop() {
-        compositeDisposableOnStop.clear()
-        super.onStop()
-    }
-
     override fun onDestroy() {
         compositeDisposableOnDestroy.clear()
         super.onDestroy()
@@ -47,10 +41,6 @@ abstract class BaseActivity(private val layoutId: Int) : AppCompatActivity(), Di
 
     override fun disposeOnPause(disposable: Disposable) {
         compositeDisposableOnPause.add(disposable)
-    }
-
-    override fun disposeOnStop(disposable: Disposable) {
-        compositeDisposableOnStop.add(disposable)
     }
 
     override fun disposeOnDestroy(disposable: Disposable) {

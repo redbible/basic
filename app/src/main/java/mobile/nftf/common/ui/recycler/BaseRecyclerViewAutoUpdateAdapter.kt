@@ -2,6 +2,7 @@ package mobile.nftf.common.ui.recycler
 
 import coinone.co.kr.official.common.ui.recyclerview.BaseRecyclerViewAdapter
 
+@Deprecated("Do not Need")
 abstract class BaseRecyclerViewAutoUpdateAdapter<T : Any> : BaseRecyclerViewAdapter<T>() {
 
     override fun add(item: T): Boolean {

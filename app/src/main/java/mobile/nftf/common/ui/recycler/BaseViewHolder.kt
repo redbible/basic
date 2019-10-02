@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
+@Deprecated("Do not Need")
 abstract class BaseViewHolder<T : Any> : RecyclerView.ViewHolder {
 
     private lateinit var data: T

@@ -15,6 +15,14 @@
         <item name="android:foreground">?android:selectableItemBackgroundBorderless</item>
     </style>
 
+    <style name="CustomDialogTheme">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
     <style name="ButtonBlueRound" parent="BtnWhite">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">67dp</item>
@@ -35,6 +43,11 @@
         <item name="android:paddingRight">29dp</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:background">@drawable/button_bg_white</item>
+    </style>
+
+    <style name="LayoutWidth">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
     </style>
 
     <style name="LineDim">
@@ -70,12 +83,16 @@
         <item name="android:textColor">@color/dim</item>
     </style>
 
-    <style name="BtnWhite">
+    <style name="BtnWhite" parent="ClickableLayout">
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">16sp</item>
         <item name="android:letterSpacing">-0.025</item>
         <item name="android:lineSpacingExtra">3sp</item>
         <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
     </style>
 
     <style name="SubtitleGrey">
@@ -85,10 +102,11 @@
         <item name="android:textColor">@color/normal</item>
     </style>
 
-    <style name="DescriptionGrey">
+    <style name="DescriptionGrey" parent="LayoutWidth">
         <item name="android:textSize">13sp</item>
         <item name="android:lineSpacingExtra">6sp</item>
         <item name="android:textColor">@color/grey</item>
+        <item name="android:gravity">center</item>
     </style>
 
     <style name="Id">
@@ -111,12 +129,13 @@
         <item name="android:textColor">@color/vibrant_blue</item>
     </style>
 
-    <style name="BtnBlue">
+    <style name="BtnBlue" parent="LayoutWidth">
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">16sp</item>
         <item name="android:letterSpacing">-0.025</item>
         <item name="android:lineSpacingExtra">3sp</item>
         <item name="android:textColor">@color/vibrant_blue</item>
+        <item name="android:gravity">center</item>
     </style>
 
     <style name="TitleWhite">

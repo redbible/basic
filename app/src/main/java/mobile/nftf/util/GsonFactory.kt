@@ -10,8 +10,6 @@ object GsonFactory {
     private val builder = GsonBuilder()
         .registerTypeAdapter(Date::class.java, DateSerializer())
 
-    fun getBuilder() = builder
-
     fun create() = builder.create()
 
     class DateSerializer : JsonSerializer<Date>, JsonDeserializer<Date> {
