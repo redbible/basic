@@ -1,4 +1,4 @@
-package mobile.nftf.util
+package com.redbible.baseview
 
 import io.reactivex.disposables.Disposable
 

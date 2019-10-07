@@ -1,17 +1,13 @@
 package mobile.nftf.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import io.reactivex.Single
-import mobile.nftf.common.ui.recycler.PaginationRecyclerViewAdapter
-import mobile.nftf.common.ui.viewmodel.BaseViewModel
+import com.redbible.baseview.disposeOnDestroy
+import com.redbible.baseview.viewmodel.BaseViewModel
 import mobile.nftf.model.Item
-import mobile.nftf.repository.RepositoryCacheImpl3
 import mobile.nftf.repository.impl.RepositoryCache
-import mobile.nftf.util.Disposer
-import mobile.nftf.util.Log
-import mobile.nftf.util.disposeOnDestroy
 
-class CartViewModel(val repositoryCache: RepositoryCache) : BaseViewModel() {
+class CartViewModel(val repositoryCache: RepositoryCache) :
+    BaseViewModel() {
     var liveItems = MutableLiveData<List<Item>>()
 
     init {

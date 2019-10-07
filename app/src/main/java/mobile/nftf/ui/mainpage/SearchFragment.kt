@@ -1,6 +1,6 @@
 package mobile.nftf.ui.mainpage
 
-import coinone.co.kr.official.common.ui.fragment.BaseDataBindingFragment
+import com.redbible.baseview.fragment.BaseDataBindingFragment
 import mobile.nftf.R
 import mobile.nftf.databinding.SearchFragmentBinding
 import mobile.nftf.viewmodel.SearchViewModel

@@ -1,10 +1,10 @@
-package mobile.nftf.common.ui.viewmodel
+package com.redbible.baseview.viewmodel
 
 import androidx.lifecycle.*
-import coinone.co.kr.official.common.ui.fragment.BaseFragment
+import com.redbible.baseview.Disposer
+import com.redbible.baseview.fragment.BaseFragment
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
-import mobile.nftf.util.Disposer
 
 abstract class BaseViewModel : ViewModel(), LifecycleObserver, Disposer {
     protected val compositeDisposableOnPause = CompositeDisposable()

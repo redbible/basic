@@ -1,10 +1,10 @@
-package coinone.co.kr.official.common.ui.activity
+package com.redbible.baseview.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.redbible.baseview.Disposer
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
-import mobile.nftf.util.Disposer
 
 abstract class BaseActivity(private val layoutId: Int) : AppCompatActivity(), Disposer {
 

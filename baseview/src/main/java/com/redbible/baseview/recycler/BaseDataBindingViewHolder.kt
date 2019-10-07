@@ -1,4 +1,4 @@
-package mobile.nftf.common.ui.recyclerview
+package com.redbible.baseview.recycler
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater

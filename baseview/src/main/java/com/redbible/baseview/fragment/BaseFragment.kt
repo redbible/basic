@@ -1,4 +1,4 @@
-package coinone.co.kr.official.common.ui.fragment
+package com.redbible.baseview.fragment
 
 import androidx.lifecycle.Lifecycle
 import android.os.Bundle

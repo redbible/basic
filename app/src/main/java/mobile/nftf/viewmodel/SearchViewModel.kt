@@ -2,12 +2,12 @@ package mobile.nftf.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import com.redbible.baseview.viewmodel.BaseViewModel
 import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import mobile.nftf.common.ui.recycler.PaginationRecyclerViewAdapter
-import mobile.nftf.common.ui.viewmodel.BaseViewModel
 import mobile.nftf.model.Item
 import mobile.nftf.repository.RepositoryTest
 import java.util.concurrent.TimeUnit

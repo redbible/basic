@@ -1,4 +1,4 @@
-package coinone.co.kr.official.common.ui.activity
+package com.redbible.baseview.activity
 
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding

@@ -1,7 +1,6 @@
 package mobile.nftf.ui
 
-import coinone.co.kr.official.common.ui.activity.BaseDataBindingActivity
-import mobile.nftf.ActivityNavigator
+import com.redbible.baseview.activity.BaseDataBindingActivity
 import mobile.nftf.R
 import mobile.nftf.databinding.MainActivityBinding
 import mobile.nftf.ui.mainpage.PageAdapter
@@ -18,7 +17,7 @@ class MainActivity : BaseDataBindingActivity<MainActivityBinding>(R.layout.main_
 //            .setClickListenerConfirm { "Confirmm".showLongToastSafe() }
 //            .show()
 //
-        ActivityNavigator.with(this@MainActivity).second("qwe").start()
+//        ActivityNavigator.with(this@MainActivity).second("qwe").start()
 //
 //        ActivityNavigator.with(this@MainActivity)
 //            .main()

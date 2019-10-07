@@ -1,11 +1,10 @@
-package mobile.nftf.common.ui.recycler
+package com.redbible.baseview.recycler
 
 import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
-import mobile.nftf.common.ui.recyclerview.BaseDataBindingViewHolder
 
-class BaseMulitDataBindingRecyclerViewAdapter<T : Any>
+class BaseDataBindingRecyclerViewAdapter<T : Any>
     : RecyclerView.Adapter<BaseDataBindingViewHolder<T, ViewDataBinding>>() {
 
     class MultiViewType<T, B>(
@@ -20,7 +19,7 @@ class BaseMulitDataBindingRecyclerViewAdapter<T : Any>
     /**
      * @see addViewType Added ViewType index is viewType Id(0...)
      */
-    fun setItemViewType(itemViewType: (item: T, position: Int, isLast: Boolean) -> Int): BaseMulitDataBindingRecyclerViewAdapter<T> {
+    fun setItemViewType(itemViewType: (item: T, position: Int, isLast: Boolean) -> Int): BaseDataBindingRecyclerViewAdapter<T> {
         this.itemViewType = itemViewType
         return this
     }
@@ -29,7 +28,7 @@ class BaseMulitDataBindingRecyclerViewAdapter<T : Any>
      * Call ViewType(Head, Content, Tail) or ViewType(Head, Content)
      * Call addViewType Sequence(Head, Content, Tail)
      */
-    fun setItemViewTypeHeadTail(): BaseMulitDataBindingRecyclerViewAdapter<T> {
+    fun setItemViewTypeHeadTail(): BaseDataBindingRecyclerViewAdapter<T> {
         this.itemViewType = { item, position, isLast ->
             when {
                 position == 0 -> 0
@@ -45,7 +44,7 @@ class BaseMulitDataBindingRecyclerViewAdapter<T : Any>
      * @param multiViewType ex) MultiViewType<Item, ImgItemBinding>(R.layout.img_item) { }
      * @see itemViewType return value -> ViewType
      **/
-    fun addViewType(multiViewType: Any): BaseMulitDataBindingRecyclerViewAdapter<T> {
+    fun addViewType(multiViewType: Any): BaseDataBindingRecyclerViewAdapter<T> {
         bindings.add(multiViewType as MultiViewType<T, ViewDataBinding>)
         return this
     }
