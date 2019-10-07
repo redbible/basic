@@ -5,7 +5,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import coinone.co.kr.official.common.ui.recyclerview.BaseRecyclerViewAdapter
 import mobile.nftf.common.ui.recycler.BaseDataBindingRecyclerViewAdapter
-import mobile.nftf.util.Log
+import mobile.nftf.common.ui.recycler.BaseMulitDataBindingRecyclerViewAdapter
 
 @Suppress("UNCHECKED_CAST")
 @BindingAdapter("replaceAll")
@@ -17,6 +17,11 @@ fun RecyclerView.replaceAll(list: List<Any>?) {
     when {
         adapter as? BaseDataBindingRecyclerViewAdapter<Any, ViewDataBinding> != null -> {
             (adapter as BaseDataBindingRecyclerViewAdapter<Any, ViewDataBinding>).run {
+                replaceAll(list)
+            }
+        }
+        adapter as? BaseMulitDataBindingRecyclerViewAdapter<Any> != null -> {
+            (adapter as BaseMulitDataBindingRecyclerViewAdapter<Any>).run {
                 replaceAll(list)
             }
         }

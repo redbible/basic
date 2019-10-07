@@ -1,4 +1,4 @@
-package mobile.nftf.ui
+package mobile.nftf.common.ui
 
 import android.app.Dialog
 import android.content.Context

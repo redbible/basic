@@ -11,7 +11,7 @@ import mobile.nftf.util.Disposer
 import mobile.nftf.util.Log
 import mobile.nftf.util.disposeOnDestroy
 
-class CartViewModel(repositoryCache: RepositoryCache) : BaseViewModel() {
+class CartViewModel(val repositoryCache: RepositoryCache) : BaseViewModel() {
     var liveItems = MutableLiveData<List<Item>>()
 
     init {
@@ -26,6 +26,10 @@ class CartViewModel(repositoryCache: RepositoryCache) : BaseViewModel() {
         repositoryCache.onChangedItems {
             liveItems.postValue(it)
         }.disposeOnDestroy(this)
+    }
+
+    fun onClickImage(item: Item) {
+        repositoryCache.toggleItem(item)
     }
 
     fun plus(a: Int, b: Int) = a + b
