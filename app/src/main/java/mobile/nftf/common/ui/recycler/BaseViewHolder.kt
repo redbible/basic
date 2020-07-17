@@ -1,10 +1,11 @@
 package mobile.nftf.common.ui.recyclerview
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
+@Deprecated("Do not Need")
 abstract class BaseViewHolder<T : Any> : RecyclerView.ViewHolder {
 
     private lateinit var data: T

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+                name="item"
+                type="mobile.nftf.model.Item" />
+
+        <variable
+                name="vm"
+                type="mobile.nftf.viewmodel.CartViewModel" />
+    </data>
+
+    <ImageView
+            android:id="@+id/img"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="@color/white"
+            app:loadUrl="@{item.thumbnail}"
+            android:onClick="@{() -> vm.onClickImage(item)}"
+            android:foreground="?android:selectableItemBackground" />
+</layout>

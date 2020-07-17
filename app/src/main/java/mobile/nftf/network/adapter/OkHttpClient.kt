@@ -3,6 +3,7 @@ package coinone.co.kr.official.network
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import mobile.nftf.BuildConfig
+import mobile.nftf.network.adapter.AuthInterceptor
 import java.util.concurrent.TimeUnit
 
 object OkHttpClient {
@@ -41,5 +42,6 @@ object OkHttpClient {
             readTimeout(READ_TIMEOUT, TimeUnit.SECONDS) //읽기 타임아웃 시간 설정
         }.addInterceptor(HttpLoggingInterceptor().apply {
             level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
-        }).build()
+        }).addInterceptor(AuthInterceptor())
+            .build()
 }

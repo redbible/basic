@@ -1,29 +1,35 @@
 package mobile.nftf.ui
 
-import android.view.View
-import coinone.co.kr.official.common.ui.activity.BaseDataBindingActivity
-import coinone.co.kr.official.common.ui.recyclerview.SimpleRecyclerViewAdapter
-import org.koin.android.ext.android.inject
+import com.redbible.baseview.activity.BaseDataBindingActivity
 import mobile.nftf.R
 import mobile.nftf.databinding.MainActivityBinding
-import mobile.nftf.network.model.DataTest
-import mobile.nftf.viewmodel.MainViewModel
+import mobile.nftf.ui.mainpage.PageAdapter
 
 class MainActivity : BaseDataBindingActivity<MainActivityBinding>(R.layout.main_activity) {
-    val viewModel by inject<MainViewModel>()
-
     override fun MainActivityBinding.onBind() {
-        viewModel.bindLifecycle(this@MainActivity)
-        view = this@MainActivity
-        vm = viewModel
+        vi = this@MainActivity
 
-        rv.adapter = SimpleRecyclerViewAdapter<DataTest>(R.layout.test_item) { view, data ->
+        viewPager.adapter = PageAdapter(supportFragmentManager)
+        tab.setupWithViewPager(viewPager)
 
-        }
-//        viewPager.adapter
-    }
-
-    fun onClickBottomButton(view: View, position: Int) {
-        view.isSelected = !view.isSelected
+//        DialogBasic(this@MainActivity, "testt", "qoweas")
+//            .setCancel()
+//            .setClickListenerConfirm { "Confirmm".showLongToastSafe() }
+//            .show()
+//
+//        ActivityNavigator.with(this@MainActivity).second("qwe").start()
+//
+//        ActivityNavigator.with(this@MainActivity)
+//            .main()
+//            .add()
+//            .second("qwe")
+//            .start()
+//
+//        Loading.show(this@MainActivity)
+//        Observable.just(1)
+//            .delay(2, TimeUnit.SECONDS)
+//            .subscribe {
+//                Loading.show(this@MainActivity)
+//            }
     }
 }

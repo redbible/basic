@@ -1,5 +1,6 @@
 package coinone.co.kr.official.common.network.api.adapter
 
+import coinone.co.kr.official.common.network.api.model.ApiPageResponse
 import io.reactivex.*
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Call
@@ -11,42 +12,30 @@ open class RxApiResponseCallAdapter<R>(private val wrapped: CallAdapter<R, *>) :
     override fun adapt(call: Call<R>): Any {
         val result = wrapped.adapt(call)
 
-        if (result as? Observable<R> != null) {
+        if (result as? Observable<ApiPageResponse<R>> != null) {
             return result
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.computation())
-                .retryWhen { rxRetryWhen(it.toFlowable(BackpressureStrategy.BUFFER)).toObservable() }
+//                .doOnNext(this::rxDoOnNext)
         }
-        if (result as? Flowable<R> != null) {
+        if (result as? Single<ApiPageResponse<R>> != null) {
             return result
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.computation())
-                .retryWhen(this::rxRetryWhen)
-        }
-        if (result as? Single<R> != null) {
-            return result
-                .subscribeOn(Schedulers.io())
-                .observeOn(Schedulers.computation())
-                .retryWhen(this::rxRetryWhen)
-        }
-        if (result as? Maybe<R> != null) {
-            return result
-                .subscribeOn(Schedulers.io())
-                .observeOn(Schedulers.computation())
-                .retryWhen(this::rxRetryWhen)
-        }
-        if (result as? Completable != null) {
-            return result
-                .subscribeOn(Schedulers.io())
-                .observeOn(Schedulers.computation())
+//                .doOnNext(this::rxDoOnNext)
         }
 
         return result
     }
 
-    override fun responseType() = wrapped.responseType()!!
+//    fun rxDoOnNext(response: ApiResponse<*>) {
+//        when (response.errorCode) {
+//            0 -> return
+//            301, 303 -> throw ExpiredTokenException(getString(coinone.co.kr.official.R.string.InvalidAccessTokenException))
+//            302, 304 -> throw ExpiredRefreshTokenException(getString(coinone.co.kr.official.R.string.TokenExpiredException))
+//            else -> throw ApiException(response.errorCode, getErrorMessage(response.errorCode, response.errorMsg))
+//        }
+//    }
 
-    open fun rxRetryWhen(flowable: Flowable<Throwable>): Flowable<*> {
-        return flowable.flatMap { Flowable.error<Throwable>(it) }
-    }
+    override fun responseType() = wrapped.responseType()!!
 }

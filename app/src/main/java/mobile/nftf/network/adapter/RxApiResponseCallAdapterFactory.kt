@@ -1,6 +1,6 @@
 package coinone.co.kr.official.common.network.api.adapter
 
-import coinone.co.kr.official.common.network.api.model.ApiResponse
+import coinone.co.kr.official.common.network.api.model.ApiPageResponse
 import io.reactivex.schedulers.Schedulers
 import retrofit2.CallAdapter
 import retrofit2.Retrofit
@@ -32,9 +32,9 @@ open class RxApiResponseCallAdapterFactory : CallAdapter.Factory {
 
     override fun get(returnType: Type, annotations: Array<out Annotation>, retrofit: Retrofit): CallAdapter<*, *>? {
         var type = returnType
-//
+
 //        if (returnType is ParameterizedType && returnType.actualTypeArguments.isNotEmpty()) {
-//            val apiResponseType = ParameterizedTypeImpl(null, ApiResponse::class.java, returnType.actualTypeArguments[0])
+//            val apiResponseType = ParameterizedTypeImpl(null, ApiPageResponse::class.java, returnType.actualTypeArguments[0])
 //
 //            type = ParameterizedTypeImpl(null, returnType.rawType, apiResponseType)
 //        }

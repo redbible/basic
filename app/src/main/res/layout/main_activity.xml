@@ -2,9 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
 
-        <variable name="view" type="mobile.nftf.ui.MainActivity"/>
-
-        <variable name="vm" type="mobile.nftf.viewmodel.MainViewModel"/>
+        <variable name="vi" type="mobile.nftf.ui.MainActivity"/>
 
     </data>
     <LinearLayout
@@ -12,12 +10,17 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-        <android.support.v7.widget.RecyclerView
+        <com.google.android.material.tabs.TabLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:tabSelectedTextColor="@color/black"
+                app:tabTextColor="@color/grey"
+                android:id="@+id/tab"/>
+
+        <androidx.viewpager.widget.ViewPager
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                replaceAll="@{vm.liveData}"
-                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-                android:id="@+id/rv"/>
+                android:id="@+id/viewPager"/>
 
     </LinearLayout>
 

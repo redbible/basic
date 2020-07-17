@@ -11,10 +11,9 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
 
-        <activity android:name=".ui.SplashActivity"
-                  android:configChanges="orientation|keyboardHidden"
-                  android:screenOrientation="portrait"
-                  android:theme="@style/SplashTheme">
+        <activity android:name=".ui.MainActivity"
+                android:configChanges="orientation|keyboardHidden"
+                android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -22,10 +21,10 @@
             </intent-filter>
         </activity>
 
-        <activity
-                android:name=".ui.MainActivity"
-                android:screenOrientation="portrait"
-                android:theme="@style/AppTheme" />
+        <activity android:name=".ui.SecondActivity"
+                android:configChanges="orientation|keyboardHidden"
+                android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>
