@@ -1,36 +1,32 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
-buildscript { 
-    ext.kotlin_version = '1.3.50'
-
+buildscript {
     ext {
-        kotlinVersion = '1.3.50'
-        gradleVersion = '3.5.0'
+        kotlinVersion = '1.4.0'
+        gradleVersion = '4.0.1'
         googleServicesVersion = '4.0.0'
 
-        compileSdkVersion = 28
+        compileSdkVersion = 30
+        buildToolVersion = '30.0.2'
         minSdkVersion = 21
-        targetSdkVersion = 28
+        targetSdkVersion = 30
 
-        androidSupportVersion = '27.1.1'
-        constraintLayoutVersion = '1.1.2'
+        constraintLayoutVersion = '2.0.0'
+        cardviewVersion = '1.0.0'
 
         rxAndroidVersion = '2.0.1'
-        rxJavaVersion = '2.1.3'
 
-        okhttpVersion = '3.9.1'
+        okhttpVersion = '3.10.0'
         retrofitVersion = '2.3.0'
 
-        glideVersion = '4.8.0'
+        glideVersion = '4.11.0'
 
-        firebaseMessageVersion = '17.3.4'
-        firebaseCoreVersion = '16.0.6'
+        firebaseMessageVersion = '20.2.4'
+        firebaseCoreVersion = '17.5.0'
 
-        koinAndroidVersion = '2.0.1'
+        koinAndroidVersion = '2.1.6'
 
-        aboutlibVersion = '6.0.8@aar'
-
-        gsonVersion = '2.8.2'
+        gsonVersion = '2.8.5'
 
         securePreferenceVersion = '0.1.4'
 
@@ -44,10 +40,7 @@ buildscript {
         classpath "com.android.tools.build:gradle:$gradleVersion"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         classpath "com.google.gms:google-services:$googleServicesVersion"
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" }
+    }
 }
 
 allprojects {
