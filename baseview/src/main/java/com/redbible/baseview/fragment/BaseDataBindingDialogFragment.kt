@@ -1,31 +1,27 @@
 package com.redbible.baseview.fragment
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.IdRes
+import android.view.Window
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Lifecycle
 import com.redbible.baseview.Disposer
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
-abstract class BaseDataBindingFragment<B : ViewDataBinding>(private val layoutId: Int) : Fragment(),
-    Disposer {
+abstract class BaseDataBindingDialogFragment<B : ViewDataBinding>(private val layoutId: Int) : DialogFragment(), Disposer {
 
-    val hasFocusObservers = mutableListOf<(Boolean) -> Unit>()
-    val lifecycleObservers = mutableListOf<(Lifecycle.Event) -> Unit>()
+    abstract fun B.onBind()
+    protected lateinit var binding: B
 
     private val compositeDisposableOnPause = CompositeDisposable()
     private val compositeDisposableOnDestroy = CompositeDisposable()
-
-    protected lateinit var binding: B
-
-    abstract fun B.onBind()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,6 +29,11 @@ abstract class BaseDataBindingFragment<B : ViewDataBinding>(private val layoutId
         savedInstanceState: Bundle?
     ): View? {
         setupProperties(arguments)
+
+        dialog?.window?.run {
+            setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            requestFeature(Window.FEATURE_NO_TITLE)
+        }
 
         return createView(inflater, container)
     }
@@ -43,13 +44,7 @@ abstract class BaseDataBindingFragment<B : ViewDataBinding>(private val layoutId
         binding.onBind()
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        runOnResume()
-    }
-
     override fun onDestroy() {
-        runOnPause()
         compositeDisposableOnDestroy.clear()
         super.onDestroy()
     }
@@ -92,10 +87,7 @@ abstract class BaseDataBindingFragment<B : ViewDataBinding>(private val layoutId
         //bundle?.getString(KEY)
     }
 
-    fun commitAllowingStateLoss(fragmentManager: FragmentManager?, @IdRes containerViewId: Int) {
-        fragmentManager?.run {
-            beginTransaction().replace(containerViewId, this@BaseDataBindingFragment)
-                .commitAllowingStateLoss()
-        }
+    fun show(fragmentManager: FragmentManager) {
+        this.show(fragmentManager, this::class.java.name)
     }
 }

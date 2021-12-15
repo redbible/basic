@@ -6,6 +6,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.fragment.app.Fragment
 import com.example.basic.ui.MainActivity
+import com.example.basic.ui.SecondActivity
 import java.util.*
 
 /**
@@ -23,7 +24,7 @@ class ActivityNavigator private constructor(private val context: Context) {
         @JvmStatic
         fun with(fragment: Fragment): ActivityNavigator = with(
             fragment.context
-                ?: fragment.activity!!
+                ?: fragment.requireActivity()
         )
     }
 
@@ -32,10 +33,10 @@ class ActivityNavigator private constructor(private val context: Context) {
     fun main() =
         MyIntent(MainActivity::class.java)
 
-//    fun second(data: String) =
-//        MyIntent(SecondActivity::class.java).apply {
-//            putExtra(KEY_DATA, data)
-//        }
+    fun second(data: String = "") =
+        MyIntent(SecondActivity::class.java).apply {
+            putExtra(KEY_DATA, data)
+        }
 
     inner class MyIntent : Intent {
 

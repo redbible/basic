@@ -4,26 +4,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.IdRes
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Lifecycle
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.redbible.baseview.Disposer
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
-abstract class BaseDataBindingFragment<B : ViewDataBinding>(private val layoutId: Int) : Fragment(),
+abstract class BaseDataBindingBottomSheetFragment<B : ViewDataBinding>(private val layoutId: Int) :
+    BottomSheetDialogFragment(),
     Disposer {
 
-    val hasFocusObservers = mutableListOf<(Boolean) -> Unit>()
-    val lifecycleObservers = mutableListOf<(Lifecycle.Event) -> Unit>()
-
+    protected lateinit var binding: B
     private val compositeDisposableOnPause = CompositeDisposable()
     private val compositeDisposableOnDestroy = CompositeDisposable()
-
-    protected lateinit var binding: B
 
     abstract fun B.onBind()
 
@@ -43,15 +40,19 @@ abstract class BaseDataBindingFragment<B : ViewDataBinding>(private val layoutId
         binding.onBind()
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        runOnResume()
-    }
-
     override fun onDestroy() {
-        runOnPause()
         compositeDisposableOnDestroy.clear()
         super.onDestroy()
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        view?.post {
+            val bottomSheetBehavior =
+                ((view?.parent as View).layoutParams as CoordinatorLayout.LayoutParams).behavior as BottomSheetBehavior
+            bottomSheetBehavior.peekHeight = activity?.window?.decorView?.measuredHeight!!
+        }
     }
 
     override fun onHiddenChanged(hidden: Boolean) {
@@ -92,10 +93,7 @@ abstract class BaseDataBindingFragment<B : ViewDataBinding>(private val layoutId
         //bundle?.getString(KEY)
     }
 
-    fun commitAllowingStateLoss(fragmentManager: FragmentManager?, @IdRes containerViewId: Int) {
-        fragmentManager?.run {
-            beginTransaction().replace(containerViewId, this@BaseDataBindingFragment)
-                .commitAllowingStateLoss()
-        }
+    fun show(fragmentManager: FragmentManager) {
+        this.show(fragmentManager, this::class.java.name)
     }
 }

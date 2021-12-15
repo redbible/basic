@@ -18,13 +18,13 @@ class AuthInterceptor : Interceptor {
             return chain.proceed(originalRequest)
         }
 
-        val url = originalRequest.url().toString()
+        val url = originalRequest.url.toString()
 //        Log.d(url)
         return chain.proceed(
             originalRequest.newBuilder()
                 .addHeader("Authorization", "KakaoAK $kakaoKey")
                 .url(url)
-                .method(originalRequest.method(), originalRequest.body())
+                .method(originalRequest.method, originalRequest.body)
                 .build()
         )
     }

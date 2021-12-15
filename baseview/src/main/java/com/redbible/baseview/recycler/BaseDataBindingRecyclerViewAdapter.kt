@@ -2,6 +2,7 @@ package com.redbible.baseview.recycler
 
 import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
 class BaseDataBindingRecyclerViewAdapter<T : Any>
@@ -15,6 +16,8 @@ class BaseDataBindingRecyclerViewAdapter<T : Any>
     private var items = mutableListOf<T>()
     private val bindings = ArrayList<MultiViewType<T, ViewDataBinding>>()
     private var itemViewType: ((item: T, position: Int, isLast: Boolean) -> Int)? = null
+    private var diffUtilItemTheSame: ((old: T, new: T) -> Boolean)? = null
+    private var diffUtilContentsTheSame: ((old: T, new: T) -> Boolean)? = null
 
     /**
      * @see addViewType Added ViewType index is viewType Id(0...)
@@ -168,11 +171,42 @@ class BaseDataBindingRecyclerViewAdapter<T : Any>
     }
 
     fun replaceAll(items: List<T>) {
-        replaceAllSilently(items)
-        notifyDataSetChanged()
+        if (diffUtilContentsTheSame == null) {
+            replaceAllSilently(items)
+            notifyDataSetChanged()
+        } else {
+            val diffResult = DiffUtil.calculateDiff(
+                BaseDiffUtil(
+                    getItems(),
+                    items,
+                    diffUtilContentsTheSame!!,
+                    diffUtilItemTheSame
+                )
+            )
+            replaceAllSilently(items)
+            diffResult.dispatchUpdatesTo(this)
+        }
     }
 
-    fun replaceAllSilently(items: List<T>) {
+    /**
+     * id를 비교 같은 아이템인지 체크
+     */
+    fun setDiffUtilItemsTheSame(itemTheSame: (old: T, new: T) -> Boolean): BaseDataBindingRecyclerViewAdapter<T> {
+        diffUtilItemTheSame = itemTheSame
+
+        return this
+    }
+
+    /**
+     * 위를 통해 아이디가 같으면 그 내용물의 변화가 있는지 체크
+     */
+    fun setDiffUtilContentsTheSame(contentsTheSame: (old: T, new: T) -> Boolean): BaseDataBindingRecyclerViewAdapter<T> {
+        diffUtilContentsTheSame = contentsTheSame
+
+        return this
+    }
+
+    private fun replaceAllSilently(items: List<T>) {
         this.items.clear()
         this.items.addAll(items)
     }

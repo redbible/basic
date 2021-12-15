@@ -15,7 +15,6 @@ class MyApplication : Application() {
         super.onCreate()
 
         startKoin {
-            androidLogger()
             androidContext(this@MyApplication)
             modules(
                 listOf(
@@ -36,11 +35,10 @@ class MyApplication : Application() {
         private var instance: MyApplication? = null
         val globalApplicationContext: MyApplication
             get() {
-                checkNotNull(instance) { "this application does not inherit CoinoneApplication" }
+                checkNotNull(instance) { "this application does not inherit Application" }
                 return instance as MyApplication
             }
 
         fun getString(stringId: Int): String = globalApplicationContext.getString(stringId)
-
     }
 }

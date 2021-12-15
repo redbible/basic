@@ -2,7 +2,7 @@ package com.redbible.baseview.viewmodel
 
 import androidx.lifecycle.*
 import com.redbible.baseview.Disposer
-import com.redbible.baseview.fragment.BaseFragment
+import com.redbible.baseview.fragment.BaseDataBindingFragment
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
@@ -59,7 +59,7 @@ abstract class BaseViewModel : ViewModel(), LifecycleObserver, Disposer {
         owner.lifecycle.addObserver(this)
     }
 
-    fun bindLifecycle(owner: BaseFragment) {
+    fun bindLifecycle(owner: BaseDataBindingFragment<*>) {
         owner.lifecycleObservers.clear()
         owner.lifecycleObservers.add {
             when (it) {

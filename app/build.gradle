@@ -14,7 +14,7 @@ android {
     defaultConfig {
         applicationId "com.example.basic"
         minSdkVersion rootProject.minSdkVersion
-        targetSdkVersion rootProject.targetSdkVersion
+        targetSdkVersion rootProject.minSdkVersion
         versionCode 1
         versionName "1.0"
 
@@ -28,14 +28,14 @@ android {
         }
     }
 
-    flavorDimensions "coinone"
+    flavorDimensions "basic"
     productFlavors {
         dev {
-            dimension "coinone"
+            dimension "basic"
             applicationIdSuffix ".dev"
             versionNameSuffix "-dev"
 
-            resValue "string", "app_name", "coinone-DEV"
+            resValue "string", "app_name", "basic-DEV"
             buildConfigField "String", "API_URL", "\"https://dapi.kakao.com/\""
 
             copy {
@@ -88,6 +88,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
 
     // androidx
+    implementation "androidx.recyclerview:recyclerview:$recyclerviewVersion"
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
     implementation "androidx.cardview:cardview:$cardviewVersion"
 
@@ -97,7 +98,7 @@ dependencies {
     // OKHttp3 + Retrofit2
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
     implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitRxVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
 
@@ -118,10 +119,12 @@ dependencies {
     // SecurePreference
     implementation "com.scottyab:secure-preferences-lib:$securePreferenceVersion"
 
+    implementation "com.google.android.material:material:$appcompatVersion" //ViewPager
+
     implementation "gun0912.ted:tedpermission-rx2:$tedPermission"
 
-    testImplementation 'junit:junit:4.12'
     testImplementation "org.koin:koin-test:$koinAndroidVersion"
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }

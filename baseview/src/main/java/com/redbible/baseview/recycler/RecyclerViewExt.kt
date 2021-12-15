@@ -18,3 +18,19 @@ fun RecyclerView.replaceAll(list: List<Any>?) {
         }
     }
 }
+
+@Suppress("UNCHECKED_CAST")
+@BindingAdapter("addAll")
+fun RecyclerView.addAll(list: List<Any>?) {
+    if (list == null) {
+        return
+    }
+
+    when {
+        adapter as? BaseDataBindingRecyclerViewAdapter<Any> != null -> {
+            (adapter as BaseDataBindingRecyclerViewAdapter<Any>).run {
+                addAll(list)
+            }
+        }
+    }
+}
