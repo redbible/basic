@@ -29,6 +29,10 @@ class MainActivity : BaseDataBindingActivity<ActivityMainBinding>(R.layout.activ
                 }
             )
         //can addViewType, will be ItemViewType 1
+
+//        disabledBackPressedToast()
+//        disabledSliderFinish()
+//        disabledPortrait()
     }
 
     fun onClickButton(type: ButtonType) {

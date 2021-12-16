@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--  use override in your app strings resource -->
+    <string name="backPressedToast">한번 더 클릭하면 앱이 종료됩니다.</string>
+</resources>

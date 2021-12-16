@@ -9,9 +9,15 @@
     </data>
 
     <LinearLayout
+            style="@style/RootLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+        <EditText
+                android:id="@+id/edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
         <FrameLayout
                 android:id="@+id/fragment"

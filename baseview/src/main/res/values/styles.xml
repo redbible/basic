@@ -1,0 +1,7 @@
+<resources>
+    <!--   use it for parent style for your activity, except for rootActivity. it make you see pre-activity when slide finish activity -->
+    <style name="SlideFinishTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+</resources>

@@ -7,6 +7,17 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppDetailTheme" parent="SlideFinishTheme">
+        <!--   for SlideFinish     -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!--  use it your rootView. because SlideFinishTheme make it transparent.  -->
+    <style name="RootLayout">
+        <item name="android:background">#ffffff</item>
+    </style>
 
     <style name="CustomDialogTheme">
         <item name="android:windowBackground">@android:color/transparent</item>

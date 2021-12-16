@@ -9,5 +9,7 @@ class SecondActivity : BaseDataBindingActivity<ActivitySecondBinding>(R.layout.a
         vi = this@SecondActivity
 
         FragmentBasic.getInstance().commitAllowingStateLoss(supportFragmentManager, R.id.fragment)
+
+        showKeyboard(edit)
     }
 }
