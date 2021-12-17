@@ -92,6 +92,8 @@ abstract class BaseDataBindingFragment<B : ViewDataBinding>(private val layoutId
         //bundle?.getString(KEY)
     }
 
+    open fun onBackPressed(): Boolean = true
+
     fun commitAllowingStateLoss(fragmentManager: FragmentManager?, @IdRes containerViewId: Int) {
         fragmentManager?.run {
             beginTransaction().replace(containerViewId, this@BaseDataBindingFragment)
