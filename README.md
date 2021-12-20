@@ -24,7 +24,7 @@ and:
 
 ```gradle
 dependencies {
-    implementation 'com.github.redbible:basic:{latest version}'     //Maybe 0.1.0
+    implementation 'com.github.redbible:basic:{latest version}'
 }
 ```
 
