@@ -15,12 +15,12 @@ import androidx.databinding.ViewDataBinding
 import com.r0adkll.slidr.Slidr
 import com.redbible.baseview.Disposer
 import com.redbible.baseview.R
-import com.redbible.baseview.disposeOnDestroy
 import com.redbible.baseview.disposeOnPause
 import com.redbible.baseview.fragment.BaseDataBindingBottomSheetFragment
 import com.redbible.baseview.fragment.BaseDataBindingDialogFragment
 import com.redbible.baseview.fragment.BaseDataBindingFragment
 import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import java.util.concurrent.TimeUnit
@@ -120,6 +120,7 @@ abstract class BaseDataBindingActivity<B : ViewDataBinding>(
     public fun showKeyboard(view: View) {
         Observable.just(1)
             .delay(300, TimeUnit.MILLISECONDS)  //activity created time
+            .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
                 view.run {
                     requestFocus()

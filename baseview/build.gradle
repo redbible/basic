@@ -34,5 +34,6 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:$recyclerviewVersion"
     implementation "com.r0adkll:slidableactivity:$slideActivityVersion"
 
+    implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
     implementation "io.reactivex.rxjava2:rxjava:2.2.13"
 }
