@@ -85,8 +85,6 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(':baseview')
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
-
     // androidx
     implementation "androidx.recyclerview:recyclerview:$recyclerviewVersion"
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
