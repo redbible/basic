@@ -2,8 +2,27 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'com.github.dcendents.android-maven'
-group='com.github.redbible'
+apply plugin: 'maven-publish'
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+
+                groupId = 'com.github.redbible'
+                artifactId = 'basic'
+                version = '0.1.5'
+                artifact(sourcesJar)
+            }
+        }
+    }
+}
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
