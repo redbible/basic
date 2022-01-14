@@ -11,6 +11,8 @@ afterEvaluate {
                 from components.release
 
                 groupId = 'com.github.redbible'
+                artifactId = 'basic'
+                version = '0.1.3'
             }
         }
     }
