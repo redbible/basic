@@ -4,6 +4,11 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'maven-publish'
 
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+
 afterEvaluate {
     publishing {
         publications {
@@ -12,7 +17,8 @@ afterEvaluate {
 
                 groupId = 'com.github.redbible'
                 artifactId = 'basic'
-                version = '0.1.4'
+                version = '0.1.5'
+                artifact(sourcesJar)
             }
         }
     }
