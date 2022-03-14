@@ -8,15 +8,12 @@ import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.annotation.IdRes
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.r0adkll.slidr.Slidr
-import com.r0adkll.slidr.model.SlidrConfig
 import com.r0adkll.slidr.model.SlidrInterface
-import com.r0adkll.slidr.model.SlidrPosition
 import com.redbible.baseview.Disposer
 import com.redbible.baseview.R
 import com.redbible.baseview.disposeOnPause
@@ -79,7 +76,7 @@ abstract class BaseDataBindingActivity<B : ViewDataBinding>(
 
     private val compositeDisposableOnPause = CompositeDisposable()
     private val compositeDisposableOnDestroy = CompositeDisposable()
-    private var slidrInterface: SlidrInterface? = null
+    protected var slidrInterface: SlidrInterface? = null
 
     protected lateinit var binding: B
     abstract fun B.onBind()
@@ -107,7 +104,7 @@ abstract class BaseDataBindingActivity<B : ViewDataBinding>(
         }
 
         if (enabledSliderFinish && !isTaskRoot) {
-            Slidr.attach(this)
+            slidrInterface = Slidr.attach(this)
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ECLAIR) {
                 if (!isTaskRoot && !isPopup) {
@@ -151,14 +148,6 @@ abstract class BaseDataBindingActivity<B : ViewDataBinding>(
                 )
             }
         }
-    }
-
-    fun getSlidr(@IdRes rootView: Int): SlidrInterface {
-        if (slidrInterface == null) {
-            slidrInterface = Slidr.replace(findViewById(rootView), SlidrConfig.Builder().position(SlidrPosition.LEFT).build())
-        }
-
-        return slidrInterface!!
     }
 
     override fun onResume() {
