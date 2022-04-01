@@ -7,6 +7,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -119,7 +120,7 @@ abstract class BaseDataBindingActivity<B : ViewDataBinding>(
      * @param view target for keyboard typing, ex) EditText
      */
     @RequiresApi(Build.VERSION_CODES.CUPCAKE)
-    public fun showKeyboard(view: View) {
+    public fun showKeyboard(view: EditText) {
         Observable.just(1)
             .delay(300, TimeUnit.MILLISECONDS)  //activity created time
             .observeOn(AndroidSchedulers.mainThread())
@@ -130,6 +131,7 @@ abstract class BaseDataBindingActivity<B : ViewDataBinding>(
                         view,
                         0
                     )
+                    setSelection(length())
                 }
             }.disposeOnPause(this)
     }
