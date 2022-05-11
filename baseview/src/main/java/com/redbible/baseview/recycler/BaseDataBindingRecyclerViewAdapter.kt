@@ -2,6 +2,7 @@ package com.redbible.baseview.recycler
 
 import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
+import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
@@ -162,6 +163,29 @@ class BaseDataBindingRecyclerViewAdapter<T : Any>
         removeAt(position)
 
         return true
+    }
+
+    fun moveItem(fromPosition: Int, toPosition: Int) {
+        val differCallback = object : DiffUtil.ItemCallback<T>() {
+            override fun areItemsTheSame(oldItem: T, newItem: T): Boolean {
+                return diffUtilItemTheSame?.invoke(oldItem, newItem) ?: false
+            }
+
+            override fun areContentsTheSame(oldItem: T, newItem: T): Boolean {
+                return diffUtilContentsTheSame?.invoke(oldItem, newItem) ?: false
+            }
+
+        }
+        val differ = AsyncListDiffer(this, differCallback)
+        val list = differ.currentList.toMutableList()
+        val fromItem = list[fromPosition]
+        list.removeAt(fromPosition)
+        if (toPosition < fromPosition) {
+            list.add(toPosition + 1, fromItem)
+        } else {
+            list.add(toPosition - 1, fromItem)
+        }
+        differ.submitList(list)
     }
 
     fun clear() {
