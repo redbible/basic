@@ -22,6 +22,7 @@ open class BaseDataBindingRecyclerViewAdapter<T : Any>
     private var diffUtilContentsTheSame: ((old: T, new: T) -> Boolean)? = null
     private var differ: AsyncListDiffer<T>? = null
     private var differCallback: DiffUtil.ItemCallback<T>? = null
+    private var dragDrop = false
 
     /**
      * @see addViewType Added ViewType index is viewType Id(0...)
@@ -247,6 +248,8 @@ open class BaseDataBindingRecyclerViewAdapter<T : Any>
         recyclerView: RecyclerView,
         response: (from: Int, to: Int) -> Unit
     ): BaseDataBindingRecyclerViewAdapter<T> {
+        dragDrop = true
+
         ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(
             ItemTouchHelper.UP or ItemTouchHelper.DOWN or ItemTouchHelper.START or ItemTouchHelper.END,
             0
@@ -281,7 +284,7 @@ open class BaseDataBindingRecyclerViewAdapter<T : Any>
         this.items.addAll(items)
 
         //set diffUtilContentsTheSame and diffUtilItemTheSame if use Drag & Drop
-        if (diffUtilContentsTheSame != null) {
+        if (dragDrop) {
             getMoveDiffer().submitList(items)
         }
     }
