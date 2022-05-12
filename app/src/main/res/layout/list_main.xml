@@ -6,14 +6,16 @@
 
         <variable
                 name="item"
-                type="String" />
+                type="com.example.basic.network.model.MainData" />
     </data>
 
     <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{item}"
+            android:padding="10dp"
+            android:text="@{item.string}"
             android:textColor="#000000"
+            android:background="@color/colorPrimary"
             android:textSize="20sp"
             tools:text="qwe" />
 </layout>

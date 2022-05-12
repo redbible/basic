@@ -4,9 +4,10 @@ import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 
-class BaseDataBindingRecyclerViewAdapter<T : Any>
+open class BaseDataBindingRecyclerViewAdapter<T : Any>
     : RecyclerView.Adapter<BaseDataBindingViewHolder<T, ViewDataBinding>>() {
 
     class MultiViewType<T, B>(
@@ -19,6 +20,8 @@ class BaseDataBindingRecyclerViewAdapter<T : Any>
     private var itemViewType: ((item: T, position: Int, isLast: Boolean) -> Int)? = null
     private var diffUtilItemTheSame: ((old: T, new: T) -> Boolean)? = null
     private var diffUtilContentsTheSame: ((old: T, new: T) -> Boolean)? = null
+    private var differ: AsyncListDiffer<T>? = null
+    private var differCallback: DiffUtil.ItemCallback<T>? = null
 
     /**
      * @see addViewType Added ViewType index is viewType Id(0...)
@@ -166,26 +169,36 @@ class BaseDataBindingRecyclerViewAdapter<T : Any>
     }
 
     fun moveItem(fromPosition: Int, toPosition: Int) {
-        val differCallback = object : DiffUtil.ItemCallback<T>() {
-            override fun areItemsTheSame(oldItem: T, newItem: T): Boolean {
-                return diffUtilItemTheSame?.invoke(oldItem, newItem) ?: false
-            }
-
-            override fun areContentsTheSame(oldItem: T, newItem: T): Boolean {
-                return diffUtilContentsTheSame?.invoke(oldItem, newItem) ?: false
-            }
-
-        }
-        val differ = AsyncListDiffer(this, differCallback)
-        val list = differ.currentList.toMutableList()
+        val list = getMoveDiffer().currentList.toMutableList()
         val fromItem = list[fromPosition]
+
         list.removeAt(fromPosition)
-        if (toPosition < fromPosition) {
-            list.add(toPosition + 1, fromItem)
-        } else {
-            list.add(toPosition - 1, fromItem)
+
+        if (toPosition < fromPosition) list.add(toPosition + 1, fromItem)
+        else list.add(toPosition - 1, fromItem)
+
+        getMoveDiffer().submitList(list)
+    }
+
+    fun getMoveDiffer(): AsyncListDiffer<T> {
+        if (differCallback == null) {
+            differCallback = object : DiffUtil.ItemCallback<T>() {
+                override fun areItemsTheSame(oldItem: T, newItem: T): Boolean {
+                    return diffUtilItemTheSame?.invoke(oldItem, newItem) ?: oldItem == newItem
+                }
+
+                override fun areContentsTheSame(oldItem: T, newItem: T): Boolean {
+                    return diffUtilContentsTheSame?.invoke(oldItem, newItem) ?: false
+                }
+
+            }
         }
-        differ.submitList(list)
+
+        if (differ == null) {
+            differ = AsyncListDiffer(this, differCallback!!)
+        }
+
+        return differ!!
     }
 
     fun clear() {
@@ -230,8 +243,46 @@ class BaseDataBindingRecyclerViewAdapter<T : Any>
         return this
     }
 
+    open fun setDragDropItem(
+        recyclerView: RecyclerView,
+        response: (from: Int, to: Int) -> Unit
+    ): BaseDataBindingRecyclerViewAdapter<T> {
+        ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(
+            ItemTouchHelper.UP or ItemTouchHelper.DOWN or ItemTouchHelper.START or ItemTouchHelper.END,
+            0
+        ) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                val fromPosition = viewHolder.adapterPosition
+                val toPosition = target.adapterPosition
+
+                notifyItemMoved(fromPosition, toPosition)
+                moveItem(fromPosition, toPosition)
+
+                response.invoke(fromPosition, toPosition)
+
+                return true
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+
+            }
+
+        }).attachToRecyclerView(recyclerView)
+
+        return this
+    }
+
     private fun replaceAllSilently(items: List<T>) {
         this.items.clear()
         this.items.addAll(items)
+
+        //set diffUtilContentsTheSame and diffUtilItemTheSame if use Drag & Drop
+        if (diffUtilContentsTheSame != null) {
+            getMoveDiffer().submitList(items)
+        }
     }
 }
