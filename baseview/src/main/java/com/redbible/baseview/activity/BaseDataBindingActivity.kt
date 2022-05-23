@@ -85,8 +85,8 @@ abstract class BaseDataBindingActivity<B : ViewDataBinding>(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        initBasicSetting()
         setupProperties(intent?.extras)
+        initBasicSetting()
         setContentView(layoutId)
 
         binding = DataBindingUtil.setContentView(this, layoutId)
