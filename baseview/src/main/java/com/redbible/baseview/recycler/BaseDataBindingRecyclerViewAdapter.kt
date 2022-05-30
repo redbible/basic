@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import java.util.*
 
 open class BaseDataBindingRecyclerViewAdapter<T : Any>
     : RecyclerView.Adapter<BaseDataBindingViewHolder<T, ViewDataBinding>>() {
@@ -169,18 +170,6 @@ open class BaseDataBindingRecyclerViewAdapter<T : Any>
         return true
     }
 
-    fun moveItem(fromPosition: Int, toPosition: Int) {
-        val list = getMoveDiffer().currentList.toMutableList()
-        val fromItem = list[fromPosition]
-
-        list.removeAt(fromPosition)
-
-        if (toPosition < fromPosition) list.add(toPosition + 1, fromItem)
-        else list.add(toPosition - 1, fromItem)
-
-        getMoveDiffer().submitList(list)
-    }
-
     fun getMoveDiffer(): AsyncListDiffer<T> {
         if (differCallback == null) {
             differCallback = object : DiffUtil.ItemCallback<T>() {
@@ -262,8 +251,8 @@ open class BaseDataBindingRecyclerViewAdapter<T : Any>
                 val fromPosition = viewHolder.adapterPosition
                 val toPosition = target.adapterPosition
 
+                Collections.swap(items, fromPosition, toPosition)
                 notifyItemMoved(fromPosition, toPosition)
-                moveItem(fromPosition, toPosition)
 
                 response.invoke(fromPosition, toPosition)
 
